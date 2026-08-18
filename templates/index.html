@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<title>Gebeta Ethiopian Restaurant - Menu</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css')}}">
+<script src="{{ url_for('static', filename='js/script.js')}}"></script>
+</head>
+<body>
+
+  <header>
+    <h1>Gebeta Restaurant</h1>
+    <p>Delicious homemade Ethiopian food</p>
+    <div class="current-time">
+      <p id="current-time"></p>
+    </div>
+  </header>
+
+  <main>
+    <h2 class="section-title">Our Menu</h2>
+    <div style="height:20px"></div>
+    <input type="text" id="myInput"oninput="searchfood()" placeholder="Search for dishes..", class="search-input">
+    <div style="height:20px"></div>
+    <div class="menu-container"></div>
+    <div style="height:40px;"></div>
+    <div class="order-summary" id="order-summary">
+      <h3>Order summary</h3>
+      <div class="total"><p id="order-count">Orders: 0</p>
+        <div style="height: 10px;"></div>
+      <p id="order-total">Total: 0 birr</p>
+    </div>
+      
+      <div id="order-items" class="order-items">No items yet.</div>
+      <button class="send-order" onclick="confirmOrder()">Send</button>
+    </div>
+    <div style="height: 30px;"></div>
+    <div class="orders-card">
+      <h3>Your Orders</h3>
+      <p>Review your current selections anytime.</p>
+    </div>
+  </main>
+
+  <footer>
+    <p>Thanks for visiting Gebeta</p>
+  </footer>
+
+</body>
+</html>

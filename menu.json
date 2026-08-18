@@ -1,0 +1,27 @@
+{
+  "Shiro": {
+    "description": "A tasty stew made from chickpea flour, garlic and spices. A local favorite!",
+    "price": 180,
+    "image": "/static/images/3.jpg"
+  },
+  "Doro Wot": {
+    "description": "Spicy chicken stew cooked with berbere sauce and boiled egg. Great for special days.",
+    "price": 340,
+    "image": "/static/images/4.jpg"
+  },
+  "Shekla Tibs": {
+    "description": "Fried beef pieces served hot and sizzling in a clay pot with onions.",
+    "price": 300,
+    "image": "/static/images/5.jpg"
+  },
+  "Tibs": {
+    "description": "Minced beef mixed with spiced butter, served with onion and chili on injera.",
+    "price": 320,
+    "image": "/static/images/2.jpg"
+  },
+  "Beyeaynetu": {
+    "description": "A mix plate of vegetarian dishes - lentils, kale, carrots and more!",
+    "price": 240,
+    "image": "/static/images/7.jpg"
+  }
+}

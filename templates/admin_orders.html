@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Admin - Orders</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+<style>
+  .admin-wrap { max-width: 1000px; margin: 40px auto; padding: 0 15px; }
+  .admin-wrap h1 { color: #c0392b; margin-bottom: 20px; }
+  .admin-table { width: 100%; border-collapse: collapse; background: white; }
+  .admin-table th, .admin-table td { border: 1px solid #e0d6c8; padding: 10px; text-align: left; font-size: 14px; vertical-align: top; }
+  .admin-table th { background: #4e3e38; color: white; }
+  .status-Pending { color: #b7791f; font-weight: bold; }
+  .status-Cancelled { color: #c0392b; font-weight: bold; }
+  .admin-actions form { display: inline; margin-right: 6px; }
+  .admin-actions button { padding: 6px 12px; border: none; border-radius: 5px; color: white; cursor: pointer; }
+  .cancel-btn { background: #b7791f; }
+  .delete-btn { background: #c0392b; }
+  .add-link { display: inline-block; margin-bottom: 15px; background: #27ae60; color: white; padding: 8px 16px; border-radius: 5px; text-decoration: none; }
+</style>
+</head>
+<body>
+
+  <div class="admin-wrap">
+    <h1>Admin - Orders</h1>
+    <a class="add-link" href="{{ url_for('admin_add') }}">+ Add Order</a>
+
+    <table class="admin-table">
+      <tr>
+        <th>ID</th>
+        <th>Customer</th>
+        <th>Items</th>
+        <th>Qty</th>
+        <th>Total</th>
+        <th>Date</th>
+        <th>Status</th>
+        <th>Actions</th>
+      </tr>
+
+      {% for order in orders %}
+      <tr>
+        <td>{{ order.id }}</td>
+        <td>{{ order.customer }}</td>
+        <td>
+          {% for item in order.items | from_json %}
+            {{ item.quantity }} x {{ item.name }}<br>
+          {% endfor %}
+        </td>
+        <td>{{ order.quantity }}</td>
+        <td>{{ order.total_price }} birr</td>
+        <td>{{ order.created_at.strftime('%Y-%m-%d %H:%M') }}</td>
+        <td class="status-{{ order.status }}">{{ order.status }}</td>
+        <td class="admin-actions">
+          {% if order.status != 'Cancelled' %}
+          <form method="POST" action="{{ url_for('admin_orders') }}">
+            <input type="hidden" name="order_id" value="{{ order.id }}">
+            <input type="hidden" name="action" value="cancel">
+            <button class="cancel-btn" type="submit">Cancel</button>
+          </form>
+          {% endif %}
+          <form method="POST" action="{{ url_for('admin_orders') }}">
+            <input type="hidden" name="order_id" value="{{ order.id }}">
+            <input type="hidden" name="action" value="delete">
+            <button class="delete-btn" type="submit" onclick="return confirm('Delete this order?')">Delete</button>
+          </form>
+        </td>
+      </tr>
+      {% else %}
+      <tr><td colspan="8">No orders yet.</td></tr>
+      {% endfor %}
+    </table>
+  </div>
+
+</body>
+</html>
