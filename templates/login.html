@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>login</title>
+    <style>
+        body{
+            margin: 0;
+            min-height: 100vh;
+            min-width: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-color: #f7efe3;
+            color: #333333;
+            font-family: Verdana, Arial, sans-serif;
+        }
+
+        .form{
+            width: min(90%, 380px);
+            padding: 32px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 8px;
+            background-color: white;
+            border: 1px solid #e3c9a8;
+            border-radius: 10px;
+            box-shadow: 0 8px 24px rgba(90, 61, 43, 0.12);
+        }
+
+        h1{
+            margin: 0 0 18px;
+            color: #8b5e3c;
+            text-align: center;
+        }
+
+        h3{
+            margin: 8px 0 2px;
+            font-size: 14px;
+        }
+
+        input{
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #d8c5b0;
+            border-radius: 5px;
+            font: inherit;
+        }
+        button{
+            width: 100%;
+            margin-top: 18px;
+            padding: 10px;
+            border-radius: 5px;
+            background-color: #8b5e3c;
+            color: white;
+            font-weight: bold;
+            
+        }
+
+        button:hover{
+            background-color: #6f482f;
+        }
+    </style>
+    <script src="{{ url_for('static', filename='js/login.js', v='2') }}"></script>
+</head>
+<body>
+    <div class="form">
+        <h1>LogIn</h1>
+        <h3>Username</h3>
+        <input name="username" type="text" id="username">
+        <h3>Password</h3>
+        <input name="password" type="password" id="password">
+        <button onclick="submit()">LogIn</button>
+    </div>
+    <p id="errormsg"></p>
+</body>
+</html>
